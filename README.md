@@ -1,10 +1,10 @@
 # AFNetworkActivityLogger
 
-`AFNetworkActivityLogger` is an extension for [AFNetworking](http://github.com/AFNetworking/AFNetworking/) 3.0 that logs network requests as they are sent and received.
+`AFNetworkActivityLogger` is an extension for [AFNetworking](http://github.com/AFNetworking/AFNetworking/) 4.0 that logs network requests as they are sent and received.
 
 > `AFNetworkActivityLogger` listens `AFNetworkingTaskDidStartNotification` and `AFNetworkingTaskDidFinishNotification` notifications, which are posted by AFNetworking as session tasks are started and finish. For further customization of logging output, users are encouraged to implement desired functionality by creating new objects that conform to `AFNetworkActivityLoggerProtocol`.
 
-## 2.x -> 3.x Migration
+## 2.x -> 4.x Migration
 3.0.0 featured the following breaking API changes:
 
 * The log `level` property is now found on the individual unique loggers, rather than the shared logger. This allows for more advanced customization options for logging level.
@@ -54,6 +54,20 @@ NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSURLRequest *  _
 By default, the shared logger is configured with an `AFNetworkActivityConsoleLogger`.
 
 To create a custom logger, create a new object that conforms to `AFNetworkActivityLoggerProtocol`, and add it to the shared logger. Be sure and configure the proper default logging level.
+
+## Swift Package Manager
+
+Add `AFNetworkActivityLogger` as a package dependency:
+
+```swift
+.package(url: "https://github.com/AFNetworking/AFNetworkActivityLogger.git", from: "4.0.0")
+```
+
+Then add `AFNetworkActivityLogger` to your target dependencies:
+
+```swift
+.product(name: "AFNetworkActivityLogger", package: "AFNetworkActivityLogger")
+```
 
 ## License
 
